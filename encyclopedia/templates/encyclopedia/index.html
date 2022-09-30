@@ -1,0 +1,42 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %} Encyclopedia {% endblock %}
+
+{% block body_content %}
+<section class="editor-main">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+	<div>
+		<h1>Welcome To Wiki</h1>
+		<p>The free encyclopedia that anyone can edit. </p>
+	</div> <br>
+	<div>
+		<h2>Wiki Pages</h2>
+		<div>
+			<form action="" method="POST">
+				{% csrf_token %}
+			</form>
+		</div>
+
+		{# All Available Entries #}
+		<div>
+			<h5>Available Entry -
+				<span>{{entries|length}}</s>
+			</h5>
+			<ul>
+				{% for entry in entries %}
+				<li>
+					{# entry title and url #}
+					<a href="{% url 'wiki_entry' entry %}"> {{ entry }} </a>
+				</li>
+				{% empty %}
+				<li>
+					<h1> No Entry Found<h1>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+{% endblock %}

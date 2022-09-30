@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %}
+Delete Entry
+{% endblock title %}
+
+
+{% block body_content %}
+
+      <div>
+        <h2>Delete Entry</h2>
+        <button>
+          <span>&times;</span>
+        </button>
+      </div>
+      <div>
+        <h3> Are you sure you want to delete </h3>
+        <h2>{{title|title}}</h2>
+      </div>
+      <div>
+        {% with title as entry_name  %}
+
+        {% url 'delete_entry' title=entry_name deletion='cancel' as cancel %}
+        <a href="{{cancel}}">
+          <button>cancel</button>
+        </a>
+        {% url 'delete_entry' title=entry_name deletion='delete' as delete %}
+        <a href="{{delete}}">
+          <button>yes, delete it</button>
+          {% endwith %}
+
+      </div>
+
+{% endblock body_content %}

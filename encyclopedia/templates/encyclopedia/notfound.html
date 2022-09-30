@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+{% block title %} Encyclopedia {% endblock %}
+
+{% block body_content %}
+<section class="editor-main">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+<div>
+	<h1>Entry Not Found</h1>
+	<p class="mt-3">Sorry, the entry you are looking for was not found</p>
+
+	<a href="{% url 'index' %}" style="text-decoration: none">
+		<button class="btn btn-outline-primary">
+			Go Back Home
+		</button>
+	</a>
+</div>
+{% endblock %}

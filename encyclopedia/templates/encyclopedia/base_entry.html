@@ -1,0 +1,52 @@
+{% extends "encyclopedia/layout.html" %}
+{% block title %} Encyclopedia {% endblock %}
+{% block body_content %}
+<section class="editor-main">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+			<li>
+			<!-- Home -->
+				<a href="{% url 'index' %}">
+					<button>Home</button>
+				</a href=>
+			</li>
+			<li>
+			<!-- Edit Entry-->
+			
+				<a href="{% url 'create_update' title %}">
+					<button>Edit</button>
+				</a>
+			</li>
+			<!-- Delete Entry-->
+			{% if debug %}
+			<li>
+				<a href="{% url 'delete_entry' title %}">
+					<button>Delete</button>
+				</a>
+				{% verbatim  %}
+				<script>
+					document.getElementById('delete_btn').addEventListener('click', function () {
+						document.getElementById('deletion_modal').css.display = "block"
+
+					})
+				</script>
+				{% endverbatim  %}
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+	<!-- Navigation control-->
+
+	<!-- Entry Content -->
+	<div>
+		<h1>
+			{{title}}
+		</h1>
+		<div id="ei_content" class="content-container my-3 py-3">
+			{{ entry|safe }}
+		</div>
+	</div>
+	<!-- Entry Content -->
+</section>
+{% endblock %}
